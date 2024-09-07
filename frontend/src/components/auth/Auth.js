@@ -6,8 +6,7 @@ export default function Auth() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    const username = '';
+    const [username, setUsername] = useState('');
 
     const url = 'http://localhost8080/api/'
     
@@ -101,6 +100,14 @@ export default function Auth() {
                 <h3 className="mb-4">Create an Account</h3>
                 <form  onSubmit={handleLogin}>
                     <div className="mb-3">
+                        <label htmlFor="signupUsername" className="form-label">
+                            Username
+                        </label>
+                        <input type="text" className="form-control" id="signupUsername" name="username"
+                        value={username} onChange={(e) => setUsername(e.target.value)}
+                        />
+                    </div>
+                    <div className="mb-3">
                         <label htmlFor="signupEmail" className="form-label">
                         Email address
                         </label>
@@ -114,7 +121,7 @@ export default function Auth() {
                         </label>
                         <input type="password" className="form-control" id="signupPassword" name="password"
                             value={password} onChange={(e) => validatePassword(e.target.value)}                        
-                        />validateConfirmPassword
+                        />
                     </div>
                     <div className="mb-3">
                         <label htmlFor="confirmPassword" className="form-label">
