@@ -1,6 +1,8 @@
-import React from 'react'
-
-export default function Header(props) {
+import { useAuth0 } from '@auth0/auth0-react';
+import React, { useState } from 'react'
+import './Header.css'
+export default function Header() {
+    const {user, isAuthenticated } = useAuth0();
     return (
         <nav className="navbar navbar-light bg-light p-3">
     <div className="container-fluid d-flex align-items-center">
@@ -13,9 +15,9 @@ export default function Header(props) {
         />
         <span className="fs-4">Project Manager</span>
     </a>
-    <div className="ms-auto text-end">
-        <small className="text-muted">
-            <i>Hi! {props.name || 'please sign in'}</i>
+    <div className="greeting-container">
+        <small className="greeting-text">
+            <i>Hi! {isAuthenticated ? user.name : 'please log in'}</i>
         </small>
     </div>
     </div>

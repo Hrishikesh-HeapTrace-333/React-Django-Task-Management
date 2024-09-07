@@ -1,2 +1,32 @@
+.elegantText {
+    font-size: 3rem; /* Larger font size for emphasis */
+    font-weight: 700; /* Bold text */
+    color: #333; /* Dark color for contrast */
+    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
+    position: relative; /* For positioning pseudo-elements */
+}
 
-  
+.authContainer {
+    position: relative; /* For positioning pseudo-elements */
+}
+
+.authContainer:hover .elegantText {
+    transform: scale(1.1); /* Scale up text on hover */
+    color: #f69d14; /* Change text color on hover */
+}
+
+.elegantText::before {
+    content: ''; /* Empty content for animation */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #76e1e5; /* Underline color */
+    transition: width 0.3s ease;
+    transform: translate(-50%, -50%);
+}
+
+.authContainer:hover .elegantText::before {
+    width: 100%; /* Expand underline on hover */
+}

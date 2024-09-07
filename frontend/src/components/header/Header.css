@@ -1,0 +1,20 @@
+.greeting-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-left: auto;
+}
+
+.greeting-text {
+    font-size: 1.1rem;
+    color: #333; /* Dark color for text */
+    font-weight: 500;
+    background: #f0f8ff; /* Light background for contrast */
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.greeting-text i {
+    font-style: normal; /* Remove italic if needed */
+}

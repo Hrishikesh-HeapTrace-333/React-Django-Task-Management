@@ -1,0 +1,45 @@
+.authButtons {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    gap: 1rem; /* Space between buttons */
+}
+
+.authButton {
+    border: none;
+    border-radius: 0.5rem; /* Rounded corners */
+    padding: 0.75rem 2rem; /* Padding inside the button */
+    font-size: 1rem; /* Font size */
+    font-weight: 600; /* Bold text */
+    cursor: pointer;
+    transition: all 0.3s ease; /* Smooth transition */
+    outline: none;
+    text-transform: uppercase; /* Uppercase text */
+}
+
+.loginButton {
+    background-color: #76e1e5; /* Blue background for login */
+    color: #ffffff; /* White text color */
+}
+
+.loginButton:hover {
+    background-color: #7bf6fa; /* Darker blue on hover */
+}
+
+.logoutButton {
+    background-color: #f69d14; /* Red background for logout */
+    color: #fff; /* White text color */
+}
+
+.logoutButton:hover {
+    background-color: #ffa318 ; /* Darker red on hover */
+}
+
+.dashboarButton {
+  background-color: #4caf50; /* Green background for dashboard */
+  color: #fff; /* White text color */
+}
+
+.dashboardButton:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
