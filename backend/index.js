@@ -1,50 +1,38 @@
-const express = require('express');
-require('dotenv').config();
-const mongoose = require('mongoose');
+import express from 'express';
+import userRoutes from './src/routes/user-routes.js';
+import cors from 'cors';
+import verifyToken from './src/jwt/jwt.js';
 const app = express();
+
 const PORT = process.env.PORT || 9000;
+// Enable CORS
+app.use(cors({
+    origin: 'http://localhost:3000',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type'],
+}));
+app.use(express.json());
 
+app.use((req, res, next) => {
+    const openRoutes = ['/api/login', '/api/signin',];
 
-mongoose.connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}).then(() => {
-    console.log('MongoDB connected successfully');
-}).catch(err => {
-    console.error('MongoDB connection error:', err);
+    if (openRoutes.includes(req.originalUrl)) {
+        next();
+    } else {
+        verifyToken(req, res, next);
+    }
 });
 
-const UserSchema = new mongoose.Schema({
-    name: String,
-    email: String,
-    password: String,
-    role: { type: String, default: 'user' }
-});
-const User = mongoose.model('user', UserSchema);
+app.use('/api', userRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
-})
+});
 
 app.get('/', async (req, res) => {
     try {
-        const users = await User.find();
-        res.json(users);
+        res.send('working');
     } catch (err) {
         res.status(500).json({ message: 'Error fetching users' });
     }
 });
-
-app.get('/insert', async (req, res) => {
-    try {
-        const result = await User.create([
-            { name: 'Andya Johnson', email: 'alice.johnson@example.com', password: 'password123', role: 'admin' },
-            { name: 'Bablya Smith', email: 'bob.smith@example.com', password: 'password456', role: 'user' },
-            { name: 'Chidya Brown', email: 'charlie.brown@example.com', password: 'password789', role: 'user' }
-        ]);
-        res.json(result);
-    } catch (err) {
-        res.status(500).json({ message: 'Error inserting data', error: err.message });
-    }
-});
-
