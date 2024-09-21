@@ -9,20 +9,18 @@ const getAllUser = async () => {
     return users;
 };
 
-const loginUser = async (body) => {
+const loginUser = async (body, header) => {
     try {
-        const user = await User.findOne({ email: body.email });
-        if (user && await bcrypt.compare(body.password, user.password)) {
-            const token = jwt.sign(
-                { userId: user.email, role: user.role }, 
-                process.env.JWT_SECRET,                
-                { expiresIn: '24h' }                    
-            );
-            return { message: 'success', user: user, token: token };
+        const user = body?.user;  // Safely access body.user
+        const token = header?.authorization?.replace('Bearer ', '');  // Safely access token and remove 'Bearer ' if present
+        
+        if (!user || !token) {
+            throw new Error('Missing user or token');
         }
-        return { message: 'failed' };
+
+        return { message: 'success', user: user, token: token };
     } catch (error) {
-        console.error('Error during login:', error);
+        console.error('Error during login:', error.message || error);
         throw new Error('Internal Server Error');
     }
 };

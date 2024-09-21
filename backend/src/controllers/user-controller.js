@@ -8,7 +8,8 @@ const getAllUser = async (req, res) => {
 const loginUser = async (req, res) => {
     try {
         const credentials = req.body;
-        const response = await service.loginUser(credentials);
+        const header = req.headers;
+        const response = await service.loginUser(credentials, header);
         if (response.message === 'failed') {
             return res.status(401).json(response); 
         }
