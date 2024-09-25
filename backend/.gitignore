@@ -1,3 +1,71 @@
-#=======================================================================
-# vitual environment
+# Python bytecode files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django specific files
+*.log
+*.pot
+*.pyc
+*.pyo
+*.sqlite3
+
+# Ignore database migrations
+*/migrations/*.py
+!*/migrations/__init__.py
+
+# Environment settings
+.env
+.env.local
+.env.production
+.env.test
+.env.*.local
+
+# Ignore virtual environments
 venv/
+ENV/
+env/
+.virtualenv/
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+*.sublime-workspace
+
+# Static files and media files
+staticfiles/
+media/
+
+# Ignore local node modules and NPM/Yarn lock files
+node_modules/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+
+# Ignore coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# Ignore pytest cache
+.pytest_cache/
+.tox/
+nosetests.xml
+
+# Ignore PEP 8 and other linting tools
+.pytest_cache/
+.coverage
+.pytest_cache/
+*.pytest_cache
+.flake8
+.tox/
+pylint.log
+
+# Ignore Django secret key
+*.pem
+secrets.json
