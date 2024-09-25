@@ -20,5 +20,12 @@ from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/user/', views.user, name='user')
+    path('api/user/', views.user, name='user'),
+    path('api/user/<int:id>/', views.user_by_id, name='user_by_id'),
+    path('api/org/', views.org, name='user'),
+    path('api/org/<int:id>/', views.org_by_id, name='org_by_id'),
+    path('api/ticket/', views.ticket, name='ticket'),
+    path('api/ticket/<int:id>/', views.ticket_by_id, name='ticket_by_id'),
+    path('api/ticket_info/', views.ticket_info, name='ticket_info'),
+    path('api/ticket_info/<int:id>/', views.ticket_info_by_id, name='ticket_info_by_id')
 ]
