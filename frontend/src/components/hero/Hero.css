@@ -5,7 +5,11 @@
     transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
     position: relative; /* For positioning pseudo-elements */
 }
-
+.elegantText:hover{
+    transform: scale(1.025); /* Scale down text on hover */
+    /* color: #3333; */
+    /* text-shadow: #881212 2px 4px 5px; */
+}
 .authContainer {
     position: relative; /* For positioning pseudo-elements */
 }

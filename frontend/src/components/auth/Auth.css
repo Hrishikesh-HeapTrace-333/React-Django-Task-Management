@@ -23,23 +23,23 @@
 }
 
 .loginButton:hover {
-    background-color: #7bf6fa; /* Darker blue on hover */
+    background-color: #00dce4; 
 }
 
 .logoutButton {
-    background-color: #f69d14; /* Red background for logout */
+    background-color: #f69d14; 
     color: #fff; /* White text color */
 }
 
 .logoutButton:hover {
-    background-color: #ffa318 ; /* Darker red on hover */
+    background-color: #fa8500 ;
 }
 
-.dashboarButton {
+.dashboardButton {
   background-color: #4caf50; /* Green background for dashboard */
   color: #fff; /* White text color */
 }
 
 .dashboardButton:hover {
-  background-color: #45a049; /* Darker green on hover */
+  background-color: #0fa116; /* Darker green on hover */
 }

@@ -13,6 +13,7 @@ root.render(
         domain="hrishikesh-ht333.eu.auth0.com"
         clientId="7KvdzwucJFvfDwGhLVy1EmkhEaEzZOC5"
         authorizationParams={{
+          audience:"https://hrishikesh-ht333.eu.auth0.com/api/v2/",
           redirect_uri: window.location.origin
         }}
       >
