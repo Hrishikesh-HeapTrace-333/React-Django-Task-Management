@@ -30,8 +30,8 @@ export default function Header() {
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/5956/5956592.png"
                         alt="Logo"
-                        height="40"
-                        className="me-2"
+                        height="5"
+                        className="me-2 w-8"
                     />
                     <span className="fs-4">Project Manager</span>
                 </a>
@@ -45,7 +45,7 @@ export default function Header() {
                                 src={user.picture}
                                 alt="Pic"
                                 height="30"
-                                className="greeting-icon rounded-5 mx-2"
+                                className="greeting-icon rounded-5"
                             />
                             <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                                 <ul>

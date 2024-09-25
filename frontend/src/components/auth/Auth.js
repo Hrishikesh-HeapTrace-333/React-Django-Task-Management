@@ -29,7 +29,8 @@ export default function Auth() {
             const response = await axios.post(`${baseUrl}/user/`, {
                user : {
                     name : user.name,
-                    email : user.email
+                    email : user.email,
+                    organizations : [2] //temperary until organization flow is implemented
                   }
             }, {
                 headers: {

@@ -1,0 +1,29 @@
+.dashboard-container {
+    display: flex;
+    width: 100%;
+    height: 100vh; /* Full screen height */
+  }
+  
+  .column {
+    flex: 1; /* Each column takes equal space */
+    padding: 16px;
+    box-sizing: border-box;
+  }
+  
+  .backlog {
+    background-color: #f0f0f0; /* Light grey for backlog */
+  }
+  
+  .inprogress {
+    background-color: #e0e0e0; /* Slightly darker grey for in-progress */
+  }
+  
+  .completed {
+    background-color: #d0d0d0; /* Even darker grey for completed */
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 16px;
+  }
+  
