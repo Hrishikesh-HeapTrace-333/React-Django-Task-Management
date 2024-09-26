@@ -1,29 +1,65 @@
 .dashboard-container {
-    display: flex;
-    width: 100%;
-    height: 100vh; /* Full screen height */
-  }
-  
-  .column {
-    flex: 1; /* Each column takes equal space */
-    padding: 16px;
-    box-sizing: border-box;
-  }
-  
-  .backlog {
-    background-color: #f0f0f0; /* Light grey for backlog */
-  }
-  
-  .inprogress {
-    background-color: #e0e0e0; /* Slightly darker grey for in-progress */
-  }
-  
-  .completed {
-    background-color: #d0d0d0; /* Even darker grey for completed */
-  }
-  
-  h1 {
-    font-size: 1.5rem;
-    margin-bottom: 16px;
-  }
-  
+  display: flex;
+  width: 100%;
+  height: fit-content;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  padding: 16px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.backlog {
+  background-color: #f0f0f0;
+}
+
+.inprogress {
+  background-color: #fffbe6;
+}
+
+.completed {
+  background-color: #eaffea;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 16px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.task-container {
+  margin: 8px 0;
+  padding: 16px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transform: translateY(-8px);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-container:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.created {
+  background-color: rgba(38, 253, 200, 0.1);
+  border-left: 4px solid #00cad1;
+}
+
+.in-progress {
+  background-color: rgba(255, 232, 28, 0.1);
+  border-left: 4px solid #d4bf00;
+}
+
+.done {
+  background-color: rgba(108, 255, 39, 0.1);
+  border-left: 4px solid #40c900;
+}
+

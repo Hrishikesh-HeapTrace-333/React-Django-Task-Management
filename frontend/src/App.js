@@ -7,7 +7,7 @@ import './index.css';
 function App() {
   return (
     <Router>
-      <div className="App container">
+      <div className="App">
         <div className = "header absolute w-full">
           <Header/>
         </div>

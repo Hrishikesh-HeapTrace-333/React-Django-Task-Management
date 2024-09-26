@@ -1,0 +1,61 @@
+.stack-container {
+    position: relative;
+    border-bottom: 2px solid #ccc;
+    border-left: 2px solid #ccc;
+    border-right: 2px solid #ccc;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+
+.book {
+    width: 90%; 
+    transform-origin: center bottom;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    margin-left: 10px;
+    position: absolute; 
+    bottom: 0; 
+}
+
+.book-spine {
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+}
+
+.bg-created {
+    background-color: #aff6ff; 
+}
+
+.bg-in-progress {
+    background-color: #fffd86; 
+}
+
+.bg-done {
+    background-color: #9aff8d; 
+}
+
+.container {
+    background-color: #ffffff;
+    border-bottom: 3px solid #ccc;
+    border-left: 3px solid #ccc;
+    border-right: 3px solid #ccc;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    border-radius: 15px;
+    position: relative; 
+    overflow: hidden;
+}
+
+.book:hover {
+    animation: scaleUp 0.5s forwards; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); 
+    cursor: pointer;
+}
+
+@keyframes scaleUp {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(-15px) scale(1.05); 
+        rotate : -2deg;
+    }
+}
