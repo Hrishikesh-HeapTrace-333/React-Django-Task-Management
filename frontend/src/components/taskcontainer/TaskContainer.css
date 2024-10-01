@@ -1,61 +1,75 @@
 .stack-container {
-    position: relative;
-    border-bottom: 2px solid #ccc;
-    border-left: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border: 4px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(20px); 
+  border-radius: 15px; 
 }
 
-
 .book {
-    width: 90%; 
-    transform-origin: center bottom;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    margin-left: 10px;
-    position: absolute; 
-    bottom: 0; 
+  width: 90%; 
+  transform-origin: center bottom;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  margin-left: 10px;
+  position: absolute; 
+  bottom: 0; 
+  background-color: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
 }
 
 .book-spine {
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.3), rgba(0, 0, 0, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
+/* Background colors for different statuses */
 .bg-created {
-    background-color: #aff6ff; 
+  background-color: rgba(190, 247, 255, 0.8); /* Adjusted for transparency */
 }
 
 .bg-in-progress {
-    background-color: #fffd86; 
+  background-color: rgba(255, 249, 196, 0.8); /* Adjusted for transparency */
 }
 
 .bg-done {
-    background-color: #9aff8d; 
+  background-color: rgba(208, 248, 206, 0.8); /* Adjusted for transparency */
 }
 
-.container {
-    background-color: #ffffff;
-    border-bottom: 3px solid #ccc;
-    border-left: 3px solid #ccc;
-    border-right: 3px solid #ccc;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    position: relative; 
-    overflow: hidden;
+.priority-low {
+  border-left: 5px solid #34c759; 
+}
+
+.priority-medium {
+  border-left: 5px solid #ffcc00; 
+}
+
+.priority-high {
+  border-left: 5px solid #ff3b30; 
 }
 
 .book:hover {
-    animation: scaleUp 0.5s forwards; 
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); 
-    cursor: pointer;
+  animation: scaleUp 0.5s forwards; 
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6); 
+  cursor: pointer;
 }
 
 @keyframes scaleUp {
-    from {
-        transform: translateY(0) scale(1);
-    }
-    to {
-        transform: translateY(-15px) scale(1.05); 
-        rotate : -2deg;
-    }
+  from {
+    transform: translateY(0) scale(1);
+  }
+  to {
+    transform: translateY(-15px) scale(1.05); 
+    rotate: -2deg;
+    z-index: 1;
+  }
+}
+
+.truncate {
+  max-width: 150px; /* Adjust based on desired width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }

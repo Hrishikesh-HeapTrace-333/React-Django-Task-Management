@@ -1,12 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'; 
 import './Auth.css'; 
+import MyContext from '../context/myContext';
 
 export default function Auth() {  
     const { user, loginWithRedirect, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
-    console.log('User logged in:', user);
+    const { refresher, setRefresher} = useContext(MyContext);
     const navigate = useNavigate(); 
     const baseUrl = 'http://localhost:8000/api'
     const handleLogin = async () => {
@@ -24,8 +25,6 @@ export default function Auth() {
     const makeBackendRequest = async () => {
         try {
             const token = await getAccessTokenSilently();
-            console.log('Token fetched:', token);
-
             const response = await axios.post(`${baseUrl}/user/`, {
                user : {
                     name : user.name,
@@ -38,7 +37,6 @@ export default function Auth() {
                 },
                 withCredentials: true
             });
-            // console.log('Backend login successful:', response.data);
             return response.data;  
         } catch (error) {
             console.error('Error in backend request:', error.response ? error.response.data : error.message);
@@ -49,7 +47,7 @@ export default function Auth() {
     const handleDashboard = async () => {
         try {
             const backendResponse = await makeBackendRequest(); 
-            // console.log('Navigating to dashboard after backend response:', backendResponse);
+            setRefresher(false);
             navigate('/dashboard'); 
         } catch (error) {
             console.error('Error in handling start building:', error);

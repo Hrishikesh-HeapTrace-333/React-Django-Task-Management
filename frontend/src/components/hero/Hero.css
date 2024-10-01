@@ -1,28 +1,46 @@
+
+.container-fluids {
+    background-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(15px); 
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    padding: 5rem; 
+    position: relative; 
+    z-index: 100; 
+    max-width: 90%; 
+    margin: 0 auto; 
+}
+
+.row {
+    align-items: center;
+    justify-content: center;
+}
+
 .elegantText {
-    font-size: 3rem; /* Larger font size for emphasis */
-    font-weight: 700; /* Bold text */
-    color: #333; /* Dark color for contrast */
-    transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition */
-    position: relative; /* For positioning pseudo-elements */
+    font-size: 3rem; 
+    font-weight: 700; 
+    color: #ffffff; 
+    transition: transform 0.3s ease, color 0.3s ease; 
+    position: relative; 
 }
-.elegantText:hover{
-    transform: scale(1.025); /* Scale down text on hover */
-    /* color: #3333; */
-    /* text-shadow: #881212 2px 4px 5px; */
+
+.elegantText:hover {
+    transform: scale(1.025);
 }
+
 .authContainer {
     position: relative; /* For positioning pseudo-elements */
 }
 
 .authContainer:hover .elegantText {
-    transform: scale(1.1); /* Scale up text on hover */
+    transform: scale(1.1); /* Scale up text more on hover */
     color: #f69d14; /* Change text color on hover */
 }
 
 .elegantText::before {
     content: ''; /* Empty content for animation */
     position: absolute;
-    top: 50%;
+    top: 100%;
     left: 50%;
     width: 0;
     height: 2px;
@@ -33,4 +51,11 @@
 
 .authContainer:hover .elegantText::before {
     width: 100%; /* Expand underline on hover */
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); 
 }
