@@ -1,0 +1,160 @@
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background-color: rgba(255, 255, 255, 0.15); 
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    transform: translateY(-20px);
+    opacity: 0;
+    backdrop-filter: blur(8px);
+  }
+  
+  .modal-content.animated {
+    animation: fadeIn 0.5s forwards, slideIn 0.5s forwards;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideIn {
+    from {
+      transform: translateY(-20px);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  
+  .modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+  }
+  
+  .close-modal-btn {
+    background: none;
+    border: none;
+    font-size: 17px;
+    cursor: pointer;
+  }
+  
+  .ticket-info {
+    margin-top: 15px;
+  }
+  
+  .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin: 8px 0;
+    color: #fff; 
+  }
+  
+  .info-label {
+    font-weight: bold;
+    color: #ffffff; 
+  }
+  
+  .info-value {
+    color: #ffffff; 
+  }
+  
+  .status-indicator {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .status-indicator.done {
+    background-color: rgb(30, 255, 0);
+    color: #05ac29;
+  }
+  
+  .status-indicator.in-progress {
+    background-color: rgb(255, 251, 0); 
+    color: #ffa200;
+  }
+  
+  .status-indicator.created {
+    background-color: rgb(46, 231, 255); 
+    color: #007ec7;
+  }
+  
+  .priority-indicator {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: bold;
+  }
+  
+  .priority-indicator.low {
+    background-color: rgb(0, 255, 72); 
+    color: #3c763d;
+  }
+  
+  .priority-indicator.medium {
+    background-color: rgb(187, 255, 0); 
+    color: #8a6d3b;
+  }
+  
+  .priority-indicator.high {
+    background-color: rgb(255, 77, 77); 
+    color: #a94442;
+  }
+  
+  .modal-footer {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .close-modal-btn {
+    padding: 10px 20px;
+    background-color: #ffffff44;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  
+  .close-modal-btn:hover {
+    background-color: #ffffff9f;
+  }
+
+  .close-modal-btn.dones:hover {
+    background-color: rgb(30, 255, 0);
+    color: #05ac29;
+  }
+  
+  .close-modal-btn.in-progresss:hover {
+    background-color: rgb(255, 251, 0); 
+    color: #ffa200;
+  }
+  
+  .close-modal-btn.createds:hover {
+    background-color: rgb(46, 231, 255); 
+    color: #007ec7;
+  }
+  
