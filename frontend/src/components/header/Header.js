@@ -1,10 +1,12 @@
 import { useAuth0 } from '@auth0/auth0-react';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import './Header.css';
+import MyContext from '../context/myContext';
 
 export default function Header() {
     const { user, isAuthenticated, logout } = useAuth0();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const { refresher, setIsSidebarOpen } = useContext(MyContext);
     const dropdownRef = useRef(null);
 
     const toggleDropDown = () => {
@@ -21,11 +23,20 @@ export default function Header() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, []);
+    }, [refresher, isAuthenticated]);
+
+    const toggleSidebar = () => {
+        setIsSidebarOpen((prevDropdown) => !prevDropdown);
+    };
 
     return (
-        <nav className="navbar navbar-light p-3 bg-light shadow-sm">
+        <nav className="navbar shadow-2xl">
             <div className="container-fluid d-flex align-items-center">
+                {window.location.href.includes('dashboard') && (
+                    <a className="sidebar-link" onClick={toggleSidebar}>
+                        <img src='./sidebar.png' className='w-9' />
+                    </a>
+                )}
                 <a className="navbar-brand d-flex align-items-center greeting-text" href="/">
                     <img
                         src="https://cdn-icons-png.flaticon.com/512/5956/5956592.png"
@@ -37,7 +48,7 @@ export default function Header() {
                 </a>
                 <div className="greeting-container" ref={dropdownRef} onClick={toggleDropDown}>
                     <small className="greeting-text">
-                        <i>Hi! {isAuthenticated ? user.name.split('.')[0] : 'please log in'}</i>
+                        <i>Hi! {isAuthenticated ? user.name.split('.')[0] > user.name.split('@')[0] ? user.name.split('@')[0] : user.name.split('.')[0] : 'please log in'}</i>
                     </small>
                     {isAuthenticated && (
                         <>

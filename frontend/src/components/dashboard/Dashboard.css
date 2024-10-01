@@ -10,19 +10,25 @@
   padding: 16px;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .backlog {
-  background-color: #f0f0f0;
+  background-color: rgba(172, 255, 248, 0.2); 
+  backdrop-filter: blur(2px); 
 }
 
 .inprogress {
-  background-color: #fffbe6;
+  background-color: rgba(255, 225, 77, 0.2);
+  backdrop-filter: blur(2px); 
+
 }
 
 .completed {
-  background-color: #eaffea;
+  background-color: rgba(86, 243, 86, 0.2);
+  backdrop-filter: blur(2px); 
+
 }
 
 h1 {
@@ -30,14 +36,15 @@ h1 {
   margin-bottom: 16px;
   text-align: center;
   font-weight: bold;
+  color: #ffffff; 
 }
 
 .task-container {
   margin: 8px 0;
   padding: 16px;
-  background-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.2); 
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   position: relative;
   transform: translateY(-8px);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -45,21 +52,40 @@ h1 {
 
 .task-container:hover {
   transform: translateY(-12px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
 .created {
-  background-color: rgba(38, 253, 200, 0.1);
-  border-left: 4px solid #00cad1;
+  background-color: rgba(38, 253, 200, 0.2);
+  border-left: 4px solid rgba(0, 202, 209, 1);
 }
 
 .in-progress {
-  background-color: rgba(255, 232, 28, 0.1);
-  border-left: 4px solid #d4bf00;
+  background-color: rgba(255, 232, 28, 0.2);
+  border-left: 4px solid rgba(212, 191, 0, 1);
 }
 
 .done {
-  background-color: rgba(108, 255, 39, 0.1);
-  border-left: 4px solid #40c900;
+  background-color: rgba(108, 255, 39, 0.2);
+  border-left: 4px solid rgba(64, 201, 0, 1);
 }
 
+.add-ticket-btn {
+  background-color: rgba(246, 157, 20, 0.9); 
+  color: white; 
+  transition: background-color 0.3s;
+}
+
+.add-ticket-btn:hover {
+  background-color: rgba(230, 138, 0, 1); 
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; 
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffffff; 
+}
