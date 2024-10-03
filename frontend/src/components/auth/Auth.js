@@ -7,7 +7,7 @@ import MyContext from '../context/myContext';
 
 export default function Auth() {  
     const { user, loginWithRedirect, isAuthenticated, logout, getAccessTokenSilently } = useAuth0();
-    const { refresher, setRefresher} = useContext(MyContext);
+    const { setRefresher, setUserId} = useContext(MyContext);
     const navigate = useNavigate(); 
     const baseUrl = 'http://localhost:8000/api'
     const handleLogin = async () => {
@@ -37,6 +37,8 @@ export default function Auth() {
                 },
                 withCredentials: true
             });
+            console.log(response.data);
+            setUserId(response.data.id);
             return response.data;  
         } catch (error) {
             console.error('Error in backend request:', error.response ? error.response.data : error.message);

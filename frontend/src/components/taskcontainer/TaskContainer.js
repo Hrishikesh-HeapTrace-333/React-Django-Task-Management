@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './TaskContainer.css'; 
 import axios from 'axios';
 import TaskModal from '../taskModal/TaskModal';
 
-function TaskContainer({ ticketInfos }) {
-  const [users, setUsers] = useState([]);
+
+function TaskContainer({ ticketInfos, users }) {
   const [selectedTicket, setSelectedTicket] = useState(null); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
-
-  useEffect(() => {
-    axios.get('http://localhost:8000/api/user/')
-      .then(response => {
-        setUsers(response.data);
-      })
-      .catch(error => console.log(error));
-  }, []);
 
   const getAssignedUser = (userId) => {
     const user = users.find(user => user.id === userId);
