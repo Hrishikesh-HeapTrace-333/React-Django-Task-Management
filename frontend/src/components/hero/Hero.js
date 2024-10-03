@@ -1,8 +1,15 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Auth from '../auth/Auth';
 import './Hero.css';
+import MyContext from '../context/myContext';
 
 export default function Hero() {
+    const { setRefresher } = useContext(MyContext);
+
+    const refresh = () => {
+        setRefresher((prevRefresher) => !prevRefresher);
+    }
+    refresh();
     return (
         <div className="container-fluids p-6">
             <div className="row d-flex align-items-center justify-content-center">

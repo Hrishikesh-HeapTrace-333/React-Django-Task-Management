@@ -3,13 +3,13 @@ import TaskContainer from '../taskcontainer/TaskContainer';
 import './Dashboard.css'; 
 import axios from 'axios';
 import MyContext from '../context/myContext';
-import Sidebar from '../sidebar/Sidebar';
+import { useAuth0 } from "@auth0/auth0-react";
 
 export default function Dashboard() {
   const [tickets, setTickets] = useState([]);
   const [ticketInfo, setTicketInfo] = useState([]);
   const [loading, setLoading] = useState(true); // Add loading state
-  const {isSidebarOpen, setIsSidebarOpen} = useContext(MyContext);
+  const [users, setUsers] = useState([]);
 
   useEffect(() => {
     // Fetch tickets
@@ -56,19 +56,18 @@ export default function Dashboard() {
   return (
 
     <>
-      {isSidebarOpen && <Sidebar/>}
-      <div className='dashboard-container '>
+    <div className='dashboard-container lg:flex-row gap-5'>
         <div className='column backlog'>
           <h1>Backlog</h1>
-          <TaskContainer ticketInfos={getTicketInfos("created")} />
+          <TaskContainer users={users} ticketInfos={getTicketInfos("created")} />
         </div>
         <div className='column inprogress'>
           <h1>In Progress</h1>
-          <TaskContainer ticketInfos={getTicketInfos("in-progress")} />
+          <TaskContainer users={users} ticketInfos={getTicketInfos("in-progress")} />
         </div>
         <div className='column completed'>
           <h1>Completed</h1>
-          <TaskContainer ticketInfos={getTicketInfos("done")} />
+          <TaskContainer users={users} ticketInfos={getTicketInfos("done")} />
         </div>
       </div>
     </>

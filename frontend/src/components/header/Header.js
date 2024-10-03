@@ -2,11 +2,13 @@ import { useAuth0 } from '@auth0/auth0-react';
 import React, { useContext, useEffect, useRef, useState } from 'react';
 import './Header.css';
 import MyContext from '../context/myContext';
+import Sidebar from '../sidebar/Sidebar';
 
 export default function Header() {
     const { user, isAuthenticated, logout } = useAuth0();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const { refresher, setIsSidebarOpen } = useContext(MyContext);
+    const { refresher, setIsSidebarOpen, isSidebarOpen} = useContext(MyContext);
+
     const dropdownRef = useRef(null);
 
     const toggleDropDown = () => {
@@ -23,16 +25,18 @@ export default function Header() {
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
         };
-    }, [refresher, isAuthenticated]);
+    }, [refresher]);
 
     const toggleSidebar = () => {
-        setIsSidebarOpen((prevDropdown) => !prevDropdown);
+        setIsSidebarOpen(prev => !prev);
     };
 
     return (
         <nav className="navbar shadow-2xl">
+            {isSidebarOpen && <Sidebar/>}
+            
             <div className="container-fluid d-flex align-items-center">
-                {window.location.href.includes('dashboard') && (
+                {isAuthenticated && (
                     <a className="sidebar-link" onClick={toggleSidebar}>
                         <img src='./sidebar.png' className='w-9' />
                     </a>
@@ -60,7 +64,7 @@ export default function Header() {
                             />
                             <div className={`dropdown-menu ${isDropdownOpen ? 'show' : ''}`}>
                                 <ul>
-                                    <li onClick={() => logout({ returnTo: window.location.origin })}>
+                                    <li onClick={() => logout()}>
                                         Logout
                                     </li>
                                 </ul>
