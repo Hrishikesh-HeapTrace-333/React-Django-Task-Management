@@ -86,15 +86,15 @@ export default function Dashboard() {
     <div className='dashboard-container lg:flex-row gap-5'>
         <div className='column backlog'>
           <h1>Backlog</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("created")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id}/>
+          <TaskContainer users={users} ticketInfos={getTicketInfos("created")} updateTicketStatus={updateTicketStatus} />
         </div>
         <div className='column inprogress'>
           <h1>In Progress</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("in-progress")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id}/>
+          <TaskContainer users={users} ticketInfos={getTicketInfos("in-progress")} updateTicketStatus={updateTicketStatus}/>
         </div>
         <div className='column completed'>
           <h1>Completed</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("done")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id}/>
+          <TaskContainer users={users} ticketInfos={getTicketInfos("done")} updateTicketStatus={updateTicketStatus}/>
         </div>
       </div>
     </>

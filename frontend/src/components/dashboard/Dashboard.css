@@ -15,20 +15,15 @@
 }
 
 .backlog {
-  background-color: rgba(172, 255, 248, 0.2); 
-  backdrop-filter: blur(2px); 
+  background-color: rgba(0, 110, 255, 0.3); 
 }
 
 .inprogress {
-  background-color: rgba(255, 225, 77, 0.2);
-  backdrop-filter: blur(2px); 
-
+  background-color: rgba(255, 217, 0, 0.3);
 }
 
 .completed {
-  background-color: rgba(86, 243, 86, 0.2);
-  backdrop-filter: blur(2px); 
-
+  background-color: rgba(86, 243, 86, 0.3);
 }
 
 h1 {

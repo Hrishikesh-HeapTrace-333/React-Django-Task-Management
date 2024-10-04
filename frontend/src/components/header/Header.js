@@ -7,7 +7,8 @@ import Sidebar from '../sidebar/Sidebar';
 export default function Header() {
     const { user, isAuthenticated, logout } = useAuth0();
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const { refresher, setIsSidebarOpen, isSidebarOpen} = useContext(MyContext);
+    const { refresher } = useContext(MyContext);
+    const [ toggleButton, setToggleButton ] = useState(false);
 
     const dropdownRef = useRef(null);
 
@@ -28,16 +29,16 @@ export default function Header() {
     }, [refresher]);
 
     const toggleSidebar = () => {
-        setIsSidebarOpen(prev => !prev);
+        setToggleButton(prev => !prev);
     };
 
     return (
         <nav className="navbar shadow-2xl">
-            {isSidebarOpen && <Sidebar/>}
+            <Sidebar  toggleButton={toggleButton} setToggleButton={setToggleButton}/>
             
             <div className="container-fluid d-flex align-items-center">
                 {isAuthenticated && (
-                    <a className="sidebar-link" onClick={toggleSidebar}>
+                    <a className="sidebar-link"  onClick={toggleSidebar}>
                         <img src='./sidebar.png' className='w-9' />
                     </a>
                 )}
