@@ -4,7 +4,7 @@ import axios from 'axios';
 import TaskModal from '../taskModal/TaskModal';
 
 
-function TaskContainer({ ticketInfos, users }) {
+function TaskContainer({ ticketInfos, users, updateTicketStatus , setTicket_TicketInfo_Id}) {
   const [selectedTicket, setSelectedTicket] = useState(null); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
 
@@ -31,6 +31,15 @@ function TaskContainer({ ticketInfos, users }) {
     setIsModalOpen(true); 
   };
 
+  const handleBookDragStart = (ids) => {
+    console.log('DragStart', ids);
+    setTicket_TicketInfo_Id(ids);
+  };
+
+  const handleBookDrop = (status) => {
+    updateTicketStatus(status);
+  }
+
   return (
     <div className="stack-container h-[500px] w-full mx-auto rounded-lg overflow-hidden">
       {ticketInfos.map((info, index) => (
@@ -42,6 +51,12 @@ function TaskContainer({ ticketInfos, users }) {
             bottom: `${index * 38}px` 
           }} 
           onClick={() => handleBookClick(info)}
+          draggable
+          onDragStart={() => handleBookDragStart([info.id, info.ticket.id])}
+          onDrop={() => handleBookDrop(info.status)}
+          onDragOver={(e) => {
+            e.preventDefault(); 
+          }} 
         >
           <div className="book-spine w-full h-full flex items-center justify-between px-4">
             <div className="flex flex-col">

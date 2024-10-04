@@ -25,17 +25,19 @@
   justify-content: space-between;
 }
 
-/* Background colors for different statuses */
 .bg-created {
-  background-color: rgba(190, 247, 255, 0.8); /* Adjusted for transparency */
+  background-color: rgba(190, 247, 255, 0.2); 
+  backdrop-filter: blur(20px); 
 }
 
 .bg-in-progress {
-  background-color: rgba(255, 249, 196, 0.8); /* Adjusted for transparency */
+  background-color: rgba(255, 249, 196, 0.2);
+  backdrop-filter: blur(20px); 
 }
 
 .bg-done {
-  background-color: rgba(208, 248, 206, 0.8); /* Adjusted for transparency */
+  background-color: rgba(208, 248, 206, 0.2);
+  backdrop-filter: blur(20px); 
 }
 
 .priority-low {

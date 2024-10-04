@@ -37,8 +37,6 @@ export default function Auth() {
                 },
                 withCredentials: true
             });
-            console.log(response.data);
-            setUserId(response.data.id);
             return response.data;  
         } catch (error) {
             console.error('Error in backend request:', error.response ? error.response.data : error.message);
