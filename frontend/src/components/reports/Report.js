@@ -1,8 +1,10 @@
 import React from 'react'
-
+import CurrentTicketStatusReport from './CurrentTicketsStatusReport/CurrentTicketStatusReport'
 function Report() {
   return (
-    <div>Report</div>
+    <>
+     <div className='text-white'><CurrentTicketStatusReport/></div>
+    </>
   )
 }
 

@@ -110,7 +110,6 @@ useEffect(() => {
   };
   
   
-
   if (loading) {
     return (
       <div className="loader">Loading...</div>
