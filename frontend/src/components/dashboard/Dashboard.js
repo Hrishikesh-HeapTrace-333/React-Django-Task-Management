@@ -11,7 +11,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true); // Add loading state
   const [users, setUsers] = useState([]);
   const [ticket_TicketInfo_Id, setTicket_TicketInfo_Id] = useState([]);
-
+  const { setNumberOfTicketsAsPerStatus} = useContext(MyContext)
   useEffect(() => {
     // Run both fetch functions and set loading to false when done
     Promise.all([fetchUsers(), fetchTickets(), fetchTicketInfo()]).then(() => {
@@ -49,14 +49,67 @@ export default function Dashboard() {
     }
 }
 
+useEffect(() => {
+  const counts = [0, 0, 0]; 
+  ticketInfo.forEach(info => {
+    if (info.status === 'created') counts[0]++;
+    else if (info.status === 'in-progress') counts[1]++;
+    else if (info.status === 'done') counts[2]++;
+  });
+  setNumberOfTicketsAsPerStatus(counts);
+}, [ticketInfo]);
+
+  // const getTicketInfos = (status) => {
+  //   const newTicketCounts = [0, 0, 0];
+  //   return ticketInfo
+  //     .filter(info => info.status === status)  
+  //     .map(info => {
+  //       if (info.status === 'created') {
+  //         newTicketCounts[0]++;
+  //       } else if (info.status === 'in-progress') {
+  //         newTicketCounts[1]++;
+  //       } else if (info.status === 'done') {
+  //         newTicketCounts[2]++;
+  //       }
+
+  //       // setNumberOfTicketsAsPerStatus(prev => [
+  //       //   prev[0] + newTicketCounts[0],
+  //       //   prev[1] + newTicketCounts[1],
+  //       //   prev[2] + newTicketCounts[2],
+  //       // ]);
+
+  //       const ticket = tickets.find(ticket => ticket.id === info.ticket);
+  //       return { ...info, ticket };  
+  //     });
+  // }
+
   const getTicketInfos = (status) => {
-    return ticketInfo
-      .filter(info => info.status === status)  
-      .map(info => {
-        const ticket = tickets.find(ticket => ticket.id === info.ticket);
-        return { ...info, ticket };  
-      });
-  }
+    const newTicketCounts = [0, 0, 0];
+    const filteredInfos = ticketInfo.filter(info => info.status === status).map(info => {
+      // Count tickets based on status without updating state
+      if (info.status === 'created') {
+        newTicketCounts[0]++;
+      } else if (info.status === 'in-progress') {
+        newTicketCounts[1]++;
+      } else if (info.status === 'done') {
+        newTicketCounts[2]++;
+      }
+  
+      const ticket = tickets.find(ticket => ticket.id === info.ticket);
+      return { ...info, ticket };
+    });
+  
+    // Update state outside of render
+    setNumberOfTicketsAsPerStatus(prev => [
+      prev[0] + newTicketCounts[0],
+      prev[1] + newTicketCounts[1],
+      prev[2] + newTicketCounts[2],
+    ]);
+  
+    return filteredInfos;
+  };
+  
+  
 
   if (loading) {
     return (
@@ -84,17 +137,17 @@ export default function Dashboard() {
   return (
     <>
     <div className='dashboard-container lg:flex-row gap-5'>
-        <div className='column backlog'>
+        <div className='column backlog border border-white'>
           <h1>Backlog</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("created")} updateTicketStatus={updateTicketStatus} />
+          <TaskContainer users={users} ticketInfos={getTicketInfos("created")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id} state='created'/>
         </div>
-        <div className='column inprogress'>
+        <div className='column inprogress border border-white'>
           <h1>In Progress</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("in-progress")} updateTicketStatus={updateTicketStatus}/>
+          <TaskContainer users={users} ticketInfos={getTicketInfos("in-progress")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id} state='in-progress'/>
         </div>
-        <div className='column completed'>
+        <div className='column completed border border-white'>
           <h1>Completed</h1>
-          <TaskContainer users={users} ticketInfos={getTicketInfos("done")} updateTicketStatus={updateTicketStatus}/>
+          <TaskContainer users={users} ticketInfos={getTicketInfos("done")} updateTicketStatus={updateTicketStatus} setTicket_TicketInfo_Id={setTicket_TicketInfo_Id} state='done'/>
         </div>
       </div>
     </>

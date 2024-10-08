@@ -1,10 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './TaskContainer.css'; 
-import axios from 'axios';
 import TaskModal from '../taskModal/TaskModal';
 
 
-function TaskContainer({ ticketInfos, users, updateTicketStatus , setTicket_TicketInfo_Id}) {
+function TaskContainer({ ticketInfos, users, updateTicketStatus , setTicket_TicketInfo_Id, state}) {
   const [selectedTicket, setSelectedTicket] = useState(null); 
   const [isModalOpen, setIsModalOpen] = useState(false); 
 
@@ -41,22 +40,24 @@ function TaskContainer({ ticketInfos, users, updateTicketStatus , setTicket_Tick
   }
 
   return (
-    <div className="stack-container h-[500px] w-full mx-auto rounded-lg overflow-hidden">
+    <div className="stack-container h-[500px] w-full mx-auto rounded-lg overflow-hidden" 
+    onDrop={() => handleBookDrop(state)}
+    onDragOver={(e) => {
+      e.preventDefault(); 
+    }} 
+      >
       {ticketInfos.map((info, index) => (
         <div
           key={index}
           className={`book p-4 h-[60px] mb-2 ${getPriorityClass(info.priority)} bg-${info.status}`}
           style={{ 
-            transform: `translateY(${index * -10}px) rotateX(-30deg)`, 
-            bottom: `${index * 38}px` 
+            transform: `rotateX(-30deg)`, 
+            bottom: `${index * 3.3}rem` 
           }} 
           onClick={() => handleBookClick(info)}
           draggable
           onDragStart={() => handleBookDragStart([info.id, info.ticket.id])}
-          onDrop={() => handleBookDrop(info.status)}
-          onDragOver={(e) => {
-            e.preventDefault(); 
-          }} 
+          
         >
           <div className="book-spine w-full h-full flex items-center justify-between px-4">
             <div className="flex flex-col">

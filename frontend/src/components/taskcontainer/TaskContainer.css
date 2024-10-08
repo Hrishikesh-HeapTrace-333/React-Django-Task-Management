@@ -60,18 +60,18 @@
 
 @keyframes scaleUp {
   from {
-    transform: translateY(+5px) scale(1);
+    transform: scale(1);
   }
   to {
-    transform: translateY(-15px) translateX(10px) scale(1.04); 
-    rotate: -2deg;
+    transform: scale(1.04); 
+    /* rotate: -2deg; */
     z-index: 1;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: rgba(255, 255, 255);
   }
 }
 
 .truncate {
-  max-width: 150px; /* Adjust based on desired width */
+  max-width: 150px; 
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

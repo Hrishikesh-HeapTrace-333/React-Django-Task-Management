@@ -3,16 +3,17 @@
     top: 100%;
     left: -250px;
     width: 250px;
-    background-color: rgba(189, 187, 187, 0.2);
-    backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.4);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     z-index: 2;
     transition: left 0.4s ease-in-out; 
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
   }
   
   .sidebar.open {
-    left: 0; 
+    left: -3px; 
+    backdrop-filter: (2px);
   }
   
   .sidebar-title {

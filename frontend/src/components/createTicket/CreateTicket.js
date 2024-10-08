@@ -2,7 +2,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import MyContext from '../context/myContext';
-
+import './CreateTicket.css';
 function CreateTicket() {
     const { user } = useAuth0();
     const{ userId, setUserId } = useContext(MyContext);
@@ -175,11 +175,15 @@ function CreateTicket() {
                     <div className="col-span-1 sm:col-span-2">
                         <button 
                             type="submit" 
-                            style={{
-                                fontWeight: 'bold',
-                                backgroundColor: 'rgba(0, 255, 0, 0.15)'
-                            }}
-                            className="w-full py-2 px-4  bg-opacity-20 border border-green-500 text-white rounded-md transition duration-300"
+                            // style={{
+                            //     fontWeight: 'bold',
+                            //     backgroundColor: 'rgba(0, 255, 0, 0.15)',
+                            //     color: '#00FF00',
+                            //     border: 'none',
+                            //     cursor: 'pointer',
+                            //     fontSize: '16px',
+                            // }}
+                            className="submitButton w-full py-2 px-4  bg-opacity-20 border border-green-500 text-white rounded-md transition duration-300"
                         >
                             Submit
                         </button>
