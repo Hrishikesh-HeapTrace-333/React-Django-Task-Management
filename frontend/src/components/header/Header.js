@@ -20,6 +20,7 @@ export default function Header() {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsDropdownOpen(false);
+                setToggleButton(false);
             }
         };
         document.addEventListener('mousedown', handleClickOutside);

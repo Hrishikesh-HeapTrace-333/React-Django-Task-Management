@@ -82,7 +82,7 @@ function CreateTicket() {
 
     return (
         <div className="flex justify-center bg-transparent">
-            <div className="bg-transparent bg-opacity-20 backdrop-blur-lg border border-opacity-60 rounded-lg shadow-lg p-6 w-full max-w-3xl">
+            <div className="form rounded-lg shadow-lg p-6 w-full max-w-3xl">
                 <h1 className="text-2xl font-semibold text-center text-white mb-6">Create Ticket</h1>
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="col-span-1">
