@@ -7,7 +7,31 @@ import './index.css';
 import { MyProvider } from './components/context/myContext';
 import CreateTicket from './components/createTicket/CreateTicket';
 import Report from './components/reports/Report';
+import { useEffect, useState } from 'react';
 function App() {
+
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  const handleScroll = () => {
+    if (window.scrollY > 300) {
+      setShowScrollButton(true);
+    } else {
+      setShowScrollButton(false);
+    }
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth', 
+    });
+  };
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [])
   return (
     <Router>
       <MyProvider>
@@ -22,6 +46,14 @@ function App() {
               <Route path="/createTicket" element={<CreateTicket />} />
               <Route path="/report" element={<Report />} />
             </Routes>
+            {showScrollButton && (
+                <button 
+                  onClick={scrollToTop} 
+                  className="scroll-to-top-btn"
+                >
+                  <img src='up.png' className='w-10'></img>
+                </button>
+              )}
           </div>
         </div>
       </MyProvider>
