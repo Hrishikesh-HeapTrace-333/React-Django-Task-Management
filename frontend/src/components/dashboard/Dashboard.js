@@ -49,44 +49,19 @@ export default function Dashboard() {
     }
 }
 
-useEffect(() => {
-  const counts = [0, 0, 0]; 
-  ticketInfo.forEach(info => {
-    if (info.status === 'created') counts[0]++;
-    else if (info.status === 'in-progress') counts[1]++;
-    else if (info.status === 'done') counts[2]++;
-  });
-  setNumberOfTicketsAsPerStatus(counts);
-}, [ticketInfo]);
-
-  // const getTicketInfos = (status) => {
-  //   const newTicketCounts = [0, 0, 0];
-  //   return ticketInfo
-  //     .filter(info => info.status === status)  
-  //     .map(info => {
-  //       if (info.status === 'created') {
-  //         newTicketCounts[0]++;
-  //       } else if (info.status === 'in-progress') {
-  //         newTicketCounts[1]++;
-  //       } else if (info.status === 'done') {
-  //         newTicketCounts[2]++;
-  //       }
-
-  //       // setNumberOfTicketsAsPerStatus(prev => [
-  //       //   prev[0] + newTicketCounts[0],
-  //       //   prev[1] + newTicketCounts[1],
-  //       //   prev[2] + newTicketCounts[2],
-  //       // ]);
-
-  //       const ticket = tickets.find(ticket => ticket.id === info.ticket);
-  //       return { ...info, ticket };  
-  //     });
-  // }
+  useEffect(() => {
+    const counts = [0, 0, 0]; 
+    ticketInfo.forEach(info => {
+      if (info.status === 'created') counts[0]++;
+      else if (info.status === 'in-progress') counts[1]++;
+      else if (info.status === 'done') counts[2]++;
+    });
+    setNumberOfTicketsAsPerStatus(counts);
+  }, [ticketInfo]);
 
   const getTicketInfos = (status) => {
     const newTicketCounts = [0, 0, 0];
     const filteredInfos = ticketInfo.filter(info => info.status === status).map(info => {
-      // Count tickets based on status without updating state
       if (info.status === 'created') {
         newTicketCounts[0]++;
       } else if (info.status === 'in-progress') {
@@ -99,16 +74,8 @@ useEffect(() => {
       return { ...info, ticket };
     });
   
-    // Update state outside of render
-    setNumberOfTicketsAsPerStatus(prev => [
-      prev[0] + newTicketCounts[0],
-      prev[1] + newTicketCounts[1],
-      prev[2] + newTicketCounts[2],
-    ]);
-  
     return filteredInfos;
   };
-  
   
   if (loading) {
     return (
