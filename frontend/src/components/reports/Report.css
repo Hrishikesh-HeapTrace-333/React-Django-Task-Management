@@ -9,4 +9,27 @@
 }
 
 
+.chart-wrapper {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;            
+    overflow: auto; 
+}
+
+.chart-container {
+    width: 1200px;        
+    height: 700px;
+    background-color: #0000003f; 
+    border: 1px solid #ffffff9a;
+    border-radius: 10px;
+    backdrop-filter: blur(20px);
+}
+
+.space-grotesk {
+    font-family: "Space Grotesk", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
   

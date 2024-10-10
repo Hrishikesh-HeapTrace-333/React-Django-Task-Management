@@ -3,7 +3,6 @@ import { PolarArea } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, RadialLinearScale, Tooltip, Legend } from 'chart.js';
 import MyContext from '../../context/myContext';
 import Dashboard from '../../dashboard/Dashboard';
-import './CurrentTicketStatusReport.css'; 
 import '../Report.css'; 
 
 function CurrentTicketStatusReport() {
