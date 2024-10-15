@@ -1,10 +1,12 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useState } from 'react'
 import Auth from '../auth/Auth';
 import './Hero.css';
 import MyContext from '../context/myContext';
+import OrganisationModal from '../organisationModal/OrganisationModal';
 
 export default function Hero() {
     const { setRefresher } = useContext(MyContext);
+    const [ showOrganization, setShowOrganization] = useState(false)
 
     const refresh = () => {
         setRefresher((prevRefresher) => !prevRefresher);
@@ -21,10 +23,12 @@ export default function Hero() {
                         <strong>Elevate...</strong> Your Project Management
                     </div>
                     <div className="authContainer">
-                        <Auth />
+                        <Auth setShowOrganization={ setShowOrganization }/>
                     </div>
                 </div>
             </div>
+
+            { showOrganization && <OrganisationModal/> }
         </div>
     );
 }

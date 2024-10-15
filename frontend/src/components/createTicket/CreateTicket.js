@@ -175,14 +175,6 @@ function CreateTicket() {
                     <div className="col-span-1 sm:col-span-2">
                         <button 
                             type="submit" 
-                            // style={{
-                            //     fontWeight: 'bold',
-                            //     backgroundColor: 'rgba(0, 255, 0, 0.15)',
-                            //     color: '#00FF00',
-                            //     border: 'none',
-                            //     cursor: 'pointer',
-                            //     fontSize: '16px',
-                            // }}
                             className="submitButton w-full py-2 px-4  bg-opacity-20 border border-green-500 text-white rounded-md transition duration-300"
                         >
                             Submit
