@@ -17,3 +17,44 @@
   .scroll-to-top-btn:hover {
     background-color: rgba(0, 0, 0, 0.7); 
   }
+
+  .fade-enter {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  
+  .fade-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  }
+  
+  .fade-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  .fade-exit-active {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+  }  
+
+/* Scroll to top button fade */
+.scroll-fade-enter {
+  opacity: 0;
+}
+.scroll-fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.scroll-fade-exit {
+  opacity: 1;
+}
+.scroll-fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms ease-out;
+}
+html {
+  overflow-y: scroll;
+}
